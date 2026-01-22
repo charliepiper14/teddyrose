@@ -1,0 +1,1632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok Ads + Shop Strategy | Teddy & Rose</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0d0d12;
+            --bg-slide: #13131a;
+            --bg-card: #1c1c26;
+            --bg-card-hover: #24242f;
+            --text-primary: #ffffff;
+            --text-secondary: #9a9ab0;
+            --text-muted: #6b6b80;
+            --accent-tiktok: #00f2ea;
+            --accent-pink: #ff0050;
+            --accent-rose: #e8b4bc;
+            --accent-gold: #d4a574;
+            --accent-green: #00d48a;
+            --accent-purple: #9d4edd;
+            --accent-soft-pink: #ffeef2;
+            --border-subtle: rgba(255,255,255,0.06);
+            --border-accent: rgba(232,180,188,0.3);
+            --gradient-tiktok: linear-gradient(135deg, #00f2ea 0%, #ff0050 100%);
+            --gradient-rose: linear-gradient(135deg, #e8b4bc 0%, #d4a574 100%);
+            --gradient-soft: linear-gradient(135deg, rgba(232,180,188,0.2) 0%, rgba(212,165,116,0.1) 100%);
+            --gradient-shop: linear-gradient(135deg, #ff0050 0%, #9d4edd 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.65;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(13,13,18,0.92);
+            backdrop-filter: blur(24px);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 1rem 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            font-size: 1.15rem;
+            letter-spacing: 0.02em;
+        }
+
+        .nav-brand .tiktok {
+            background: var(--gradient-tiktok);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-brand .shop {
+            background: var(--gradient-shop);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-brand .rose {
+            color: var(--accent-rose);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-rose);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-rose);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Slide Container */
+        .slide {
+            min-height: 100vh;
+            padding: 7rem 5rem 5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .slide-content {
+            max-width: 1440px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Title Slide */
+        .slide-hero {
+            background: 
+                radial-gradient(ellipse at 80% 20%, rgba(0,242,234,0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 20% 80%, rgba(255,0,80,0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(232,180,188,0.04) 0%, transparent 70%),
+                var(--bg-dark);
+            overflow: hidden;
+        }
+
+        .slide-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(232,180,188,0.03) 0%, transparent 70%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-30px, 30px) rotate(5deg); }
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.6rem 1.25rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 100px;
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-eyebrow .dot {
+            width: 6px;
+            height: 6px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.2); }
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 600;
+            line-height: 1.08;
+            margin-bottom: 1.75rem;
+            letter-spacing: -0.02em;
+            animation: fadeInUp 0.8s ease 0.1s both;
+        }
+
+        .hero-title .gradient-tiktok {
+            background: var(--gradient-tiktok);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-title .gradient-shop {
+            background: var(--gradient-shop);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-title .gradient-rose {
+            background: var(--gradient-rose);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            max-width: 680px;
+            margin-bottom: 3.5rem;
+            line-height: 1.7;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 4rem;
+            animation: fadeInUp 0.8s ease 0.3s both;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .meta-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+
+        .meta-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        /* Section Headers */
+        .section-number {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent-rose);
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .section-number.shop {
+            color: var(--accent-pink);
+        }
+
+        .section-number::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, currentColor, transparent);
+            max-width: 180px;
+            opacity: 0.5;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+            white-space: nowrap;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 720px;
+            margin-bottom: 3.5rem;
+            line-height: 1.75;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .cards-grid-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 2.25rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient-rose);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card.shop-card::before {
+            background: var(--gradient-shop);
+        }
+
+        .card:hover {
+            border-color: var(--border-accent);
+            transform: translateY(-6px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3), 0 0 0 1px rgba(232,180,188,0.1);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon {
+            width: 52px;
+            height: 52px;
+            background: var(--gradient-soft);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .card-icon.shop {
+            background: linear-gradient(135deg, rgba(255,0,80,0.15) 0%, rgba(157,78,221,0.15) 100%);
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.85rem;
+            white-space: nowrap;
+        }
+
+        .card-text {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Metrics Grid */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-rose);
+        }
+
+        .metric-card.shop::before {
+            background: var(--gradient-shop);
+        }
+
+        .metric-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.75rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-value.rose { color: var(--accent-rose); }
+        .metric-value.tiktok { color: var(--accent-tiktok); }
+        .metric-value.pink { color: var(--accent-pink); }
+        .metric-value.gold { color: var(--accent-gold); }
+        .metric-value.green { color: var(--accent-green); }
+        .metric-value.purple { color: var(--accent-purple); }
+
+        .metric-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Tables */
+        .data-table {
+            width: 100%;
+            background: var(--bg-card);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .data-table thead {
+            background: linear-gradient(135deg, rgba(232,180,188,0.1) 0%, rgba(212,165,116,0.05) 100%);
+        }
+
+        .data-table.shop thead {
+            background: linear-gradient(135deg, rgba(255,0,80,0.1) 0%, rgba(157,78,221,0.05) 100%);
+        }
+
+        .data-table th {
+            padding: 1.25rem 1.5rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: var(--accent-rose);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .data-table.shop th {
+            color: var(--accent-pink);
+        }
+
+        .data-table td {
+            padding: 1.25rem 1.5rem;
+            border-top: 1px solid var(--border-subtle);
+            font-size: 0.95rem;
+        }
+
+        .data-table tbody tr:hover {
+            background: rgba(255,255,255,0.02);
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.4rem 0.85rem;
+            border-radius: 8px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        .tag-primary { background: rgba(232,180,188,0.15); color: var(--accent-rose); }
+        .tag-tiktok { background: rgba(0,242,234,0.15); color: var(--accent-tiktok); }
+        .tag-success { background: rgba(0,212,138,0.15); color: var(--accent-green); }
+        .tag-warning { background: rgba(212,165,116,0.2); color: var(--accent-gold); }
+        .tag-pink { background: rgba(255,0,80,0.15); color: var(--accent-pink); }
+        .tag-purple { background: rgba(157,78,221,0.15); color: var(--accent-purple); }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2.5rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gradient-rose);
+        }
+
+        .timeline.shop::before {
+            background: var(--gradient-shop);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2.75rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 0.5rem;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--accent-rose);
+            transform: translateX(-6px);
+            box-shadow: 0 0 24px rgba(232,180,188,0.4);
+        }
+
+        .timeline.shop .timeline-item::before {
+            background: var(--accent-pink);
+            box-shadow: 0 0 24px rgba(255,0,80,0.4);
+        }
+
+        .timeline-day {
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--accent-rose);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.02em;
+        }
+
+        .timeline.shop .timeline-day {
+            color: var(--accent-pink);
+        }
+
+        .timeline-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-text {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Creative Section */
+        .creative-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .creative-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .creative-card:hover {
+            border-color: var(--border-accent);
+            transform: translateY(-4px) scale(1.02);
+        }
+
+        .creative-preview {
+            aspect-ratio: 9/16;
+            background: linear-gradient(180deg, #1c1c26 0%, #24242f 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.75rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .creative-preview::before {
+            content: 'CONCEPT';
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--accent-rose);
+            letter-spacing: 0.1em;
+            opacity: 0.7;
+        }
+
+        .creative-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .creative-hook {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .creative-meta {
+            padding: 1.25rem;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .creative-type {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.35rem;
+        }
+
+        .creative-performance {
+            font-weight: 600;
+            color: var(--accent-green);
+            font-size: 0.9rem;
+        }
+
+        /* Two Column Layout */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3.5rem;
+            align-items: start;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: var(--gradient-soft);
+            border: 1px solid var(--border-accent);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .info-box.shop {
+            background: linear-gradient(135deg, rgba(255,0,80,0.08) 0%, rgba(157,78,221,0.05) 100%);
+            border-color: rgba(255,0,80,0.2);
+        }
+
+        .info-box-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--accent-rose);
+            white-space: nowrap;
+        }
+
+        .info-box.shop .info-box-title {
+            color: var(--accent-pink);
+        }
+
+        .info-box-text {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* CTA Box */
+        .cta-box {
+            background: var(--gradient-soft);
+            border: 1px solid var(--border-accent);
+            border-radius: 24px;
+            padding: 3.5rem;
+            text-align: center;
+            margin-top: 3.5rem;
+        }
+
+        .cta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.65rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            white-space: nowrap;
+        }
+
+        .cta-text {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 540px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+
+        .cta-items {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .cta-item .check {
+            color: var(--accent-green);
+            font-weight: 700;
+        }
+
+        /* Checklist */
+        .checklist {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.85rem;
+            font-size: 0.95rem;
+        }
+
+        .checklist-item .box {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--accent-rose);
+            border-radius: 4px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .checklist-item .box.shop {
+            border-color: var(--accent-pink);
+        }
+
+        /* Stats Row */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 1.75rem;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-tiktok);
+            margin-bottom: 0.35rem;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(0,242,234,0.08) 0%, rgba(255,0,80,0.05) 100%);
+            border: 1px solid rgba(0,242,234,0.2);
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .highlight-box p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .highlight-box strong {
+            color: var(--accent-tiktok);
+        }
+
+        /* Feature Comparison */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-column {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 2rem;
+        }
+
+        .feature-column h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            white-space: nowrap;
+        }
+
+        .feature-column h4 .badge {
+            font-size: 0.65rem;
+            font-family: 'Outfit', sans-serif;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list li::before {
+            content: '→';
+            color: var(--accent-rose);
+            font-weight: 600;
+        }
+
+        /* Phase Badge */
+        .phase-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .phase-badge.phase-1 { border-color: rgba(232,180,188,0.3); color: var(--accent-rose); }
+        .phase-badge.phase-2 { border-color: rgba(255,0,80,0.3); color: var(--accent-pink); }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero-title { font-size: 3.5rem; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+            .creative-grid { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-3 { grid-template-columns: 1fr; }
+            .cta-title { font-size: 1.4rem; }
+        }
+
+        @media (max-width: 900px) {
+            .slide { padding: 6rem 2.5rem 3.5rem; }
+            .hero-title { font-size: 2.75rem; }
+            .section-title { font-size: 2.25rem; white-space: normal; }
+            .two-col { grid-template-columns: 1fr; }
+            .feature-grid { grid-template-columns: 1fr; }
+            .hero-meta { flex-direction: column; gap: 1.5rem; }
+            .nav-links { display: none; }
+            .cta-title { font-size: 1.25rem; white-space: normal; }
+        }
+
+        @media (max-width: 600px) {
+            .slide { padding: 5rem 1.5rem 3rem; }
+            .hero-title { font-size: 2.25rem; }
+            .section-title { font-size: 1.75rem; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .creative-grid { grid-template-columns: 1fr; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .stats-row { grid-template-columns: 1fr; }
+            .cta-title { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-brand"><span class="tiktok">TikTok</span> + <span class="shop">Shop</span> × <span class="rose">Teddy & Rose</span></div>
+        <ul class="nav-links">
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#opportunity">Opportunity</a></li>
+            <li><a href="#tiktok-shop">TikTok Shop</a></li>
+            <li><a href="#targets">Targets</a></li>
+            <li><a href="#creative">Creative</a></li>
+            <li><a href="#structure">Structure</a></li>
+            <li><a href="#timeline">Timeline</a></li>
+        </ul>
+    </nav>
+
+    <!-- Slide 1: Hero -->
+    <section class="slide slide-hero" id="overview">
+        <div class="slide-content">
+            <span class="hero-eyebrow">
+                <span class="dot"></span>
+                Q1 2026 Full Commerce Strategy
+            </span>
+            <h1 class="hero-title">
+                <span class="gradient-tiktok">TikTok Ads</span> +<br>
+                <span class="gradient-shop">TikTok Shop</span><br>
+                for <span class="gradient-rose">Teddy & Rose</span>
+            </h1>
+            <p class="hero-subtitle">
+                A complete commerce playbook combining TikTok's discovery-driven advertising with native in-app shopping. Reach new customers, reduce friction, and build a scalable channel for elevated basics.
+            </p>
+            <div class="hero-meta">
+                <div class="meta-item">
+                    <span class="meta-label">Client</span>
+                    <span class="meta-value">Teddy & Rose</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Target Launch</span>
+                    <span class="meta-value">February 2026</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Initial Budget</span>
+                    <span class="meta-value">$150/day</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Prepared By</span>
+                    <span class="meta-value">Heath Media</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 2: The Opportunity -->
+    <section class="slide" id="opportunity">
+        <div class="slide-content">
+            <span class="section-number">01 — The Opportunity</span>
+            <h2 class="section-title">TikTok Is Now a Commerce Engine</h2>
+            <p class="section-subtitle">
+                TikTok Shop hit $33B+ global GMV in 2024 and is on track to double in 2025. Womenswear is one of the top 3 categories. This isn't experimental—it's a proven sales channel.
+            </p>
+
+            <div class="stats-row">
+                <div class="stat-item">
+                    <div class="stat-value">$1.1B</div>
+                    <div class="stat-label">US Monthly GMV (TikTok Shop)</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">71.4M</div>
+                    <div class="stat-label">US TikTok Shoppers in 2025</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">40%+</div>
+                    <div class="stat-label">GMV from Fashion, Beauty, Health</div>
+                </div>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">🔮</div>
+                    <h3 class="card-title">Discovery Commerce Model</h3>
+                    <p class="card-text">67% of users say TikTok inspires them to shop even when they weren't planning to. Content creates demand—then Shop captures it instantly.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">👩‍🦳</div>
+                    <h3 class="card-title">Growing 35+ Demographic</h3>
+                    <p class="card-text">Adults 45+ are one of TikTok's fastest-growing segments. 39% of US adults use TikTok multiple times per week—far beyond Gen Z stereotypes.</p>
+                </div>
+                <div class="card shop-card">
+                    <div class="card-icon shop">🛒</div>
+                    <h3 class="card-title">Frictionless Checkout</h3>
+                    <p class="card-text">TikTok Shop checkout happens in-app. No website redirect, no abandoned carts from external links. 84% of users say TikTok Shop is "convenient and easy."</p>
+                </div>
+                <div class="card shop-card">
+                    <div class="card-icon shop">🤝</div>
+                    <h3 class="card-title">Affiliate Program Power</h3>
+                    <p class="card-text">Recruit creators to sell your products for commission (15-20%). Their videos become shoppable ads. Sugar Island Clothing hit 4.27X ROAS using this approach.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">⚡</div>
+                    <h3 class="card-title">GMV Max Automation</h3>
+                    <p class="card-text">TikTok's AI-powered campaign system automatically optimizes organic, affiliate, and paid content. Early adopters report 30% GMV uplift vs. manual campaigns.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🔄</div>
+                    <h3 class="card-title">Weekly Arrivals Synergy</h3>
+                    <p class="card-text">Monday drops become shoppable content moments. TikTok's algorithm rewards fresh content—the weekly cadence is a perfect fit for the platform.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 3: TikTok Shop Deep Dive -->
+    <section class="slide" id="tiktok-shop">
+        <div class="slide-content">
+            <span class="section-number shop">02 — TikTok Shop & Seller Center</span>
+            <h2 class="section-title">Native Commerce Infrastructure</h2>
+            <p class="section-subtitle">
+                TikTok Shop isn't just an ad format—it's a complete commerce platform with Shopify integration, affiliate management, and automated campaign optimization via GMV Max.
+            </p>
+
+            <div class="two-col">
+                <div>
+                    <div class="info-box shop">
+                        <h4 class="info-box-title">⚠️ Critical Update: GMV Max Required</h4>
+                        <p class="info-box-text">As of July 2025, GMV Max is the <strong>only supported campaign type</strong> for TikTok Shop Ads. Manual Video Shopping Ads and LIVE Shopping Ads have been discontinued. All Shop advertising now runs through GMV Max automation.</p>
+                    </div>
+
+                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin: 2rem 0 1.5rem;">Seller Center Capabilities</h3>
+                    <table class="data-table shop">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Function</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Product Catalog</strong></td>
+                                <td>Upload SKUs, manage inventory, sync with Shopify</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Order Management</strong></td>
+                                <td>Process orders, manage shipping, handle returns</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Affiliate Hub</strong></td>
+                                <td>Recruit creators, set commissions, track performance</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Shop Ads</strong></td>
+                                <td>Launch GMV Max campaigns directly from Seller Center</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Analytics</strong></td>
+                                <td>Real-time GMV, orders, visitors, conversion rates</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div>
+                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 1.5rem;">GMV Max: How It Works</h3>
+                    <div class="card shop-card" style="margin-bottom: 1.25rem;">
+                        <h4 class="card-title">Automated Creative Selection</h4>
+                        <p class="card-text">GMV Max automatically pulls organic videos, affiliate content, and paid ads into a single campaign. AI tests combinations and scales winners.</p>
+                    </div>
+                    <div class="card shop-card" style="margin-bottom: 1.25rem;">
+                        <h4 class="card-title">Multi-Placement Delivery</h4>
+                        <p class="card-text">Ads appear across TikTok Feed, Search, Shop Tab, and Pangle (TikTok's ad network)—all optimized automatically for maximum GMV.</p>
+                    </div>
+                    <div class="card shop-card" style="margin-bottom: 1.25rem;">
+                        <h4 class="card-title">ROI-Based Optimization</h4>
+                        <p class="card-text">Set a minimum ROAS target and daily budget. GMV Max optimizes to hit your ROI goal while maximizing total sales volume.</p>
+                    </div>
+                    <div class="card shop-card">
+                        <h4 class="card-title">Affiliate Attribution</h4>
+                        <p class="card-text">When affiliate videos are boosted, sales are tracked and commissions paid automatically. All attribution visible in Seller Center dashboard.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 4: Two-Phase Strategy -->
+    <section class="slide">
+        <div class="slide-content">
+            <span class="section-number">03 — Strategic Approach</span>
+            <h2 class="section-title">Two-Phase Launch Strategy</h2>
+            <p class="section-subtitle">
+                We recommend a phased approach: start with website conversion campaigns to build pixel data and prove creative, then integrate TikTok Shop for native commerce.
+            </p>
+
+            <div class="feature-grid">
+                <div class="feature-column">
+                    <h4>
+                        Phase 1: Website Conversions
+                        <span class="badge tag-primary">Weeks 1-6</span>
+                    </h4>
+                    <ul class="feature-list">
+                        <li>Standard In-Feed Ads + Spark Ads driving to shopteddyrose.com</li>
+                        <li>Build TikTok pixel data for audience optimization</li>
+                        <li>Test creative formats and hooks with existing checkout flow</li>
+                        <li>Create custom and lookalike audiences from converters</li>
+                        <li>Lower operational complexity—orders flow through existing Shopify</li>
+                        <li>Prove ROAS before adding TikTok Shop complexity</li>
+                    </ul>
+                </div>
+                <div class="feature-column">
+                    <h4>
+                        Phase 2: TikTok Shop + GMV Max
+                        <span class="badge tag-pink">Weeks 7+</span>
+                    </h4>
+                    <ul class="feature-list">
+                        <li>Open TikTok Seller Center account and sync Shopify catalog</li>
+                        <li>Enable in-app checkout for frictionless purchases</li>
+                        <li>Launch GMV Max campaigns with proven creative</li>
+                        <li>Activate affiliate program to expand creator reach</li>
+                        <li>Test Video Shopping Ads with product tags</li>
+                        <li>Explore LIVE Shopping for weekly arrivals launches</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="info-box" style="margin-top: 3rem;">
+                <h4 class="info-box-title">Why Phase Website First?</h4>
+                <p class="info-box-text">TikTok Shop adds operational complexity: separate order management, shipping logistics, and commission structures. Starting with website campaigns lets us prove the channel works before adding that complexity. It also builds pixel data that improves Phase 2 targeting. If Phase 1 hits 2.5X+ ROAS, we have strong signal to invest in Shop infrastructure.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 5: Target Metrics -->
+    <section class="slide" id="targets">
+        <div class="slide-content">
+            <span class="section-number">04 — Performance Targets</span>
+            <h2 class="section-title">ROAS & Efficiency Goals by Phase</h2>
+            <p class="section-subtitle">
+                Different targets for each phase, accounting for platform learning, creative testing, and the reduced friction of TikTok Shop checkout.
+            </p>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value rose">2.5X</div>
+                    <div class="metric-label">Phase 1 ROAS (Website)</div>
+                </div>
+                <div class="metric-card shop">
+                    <div class="metric-value pink">3.5X</div>
+                    <div class="metric-label">Phase 2 ROAS (Shop)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value gold">5X+</div>
+                    <div class="metric-label">Scale Phase ROAS</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value green">2X</div>
+                    <div class="metric-label">Breakeven ROAS</div>
+                </div>
+            </div>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Phase 1: Website (Wk 1-6)</th>
+                        <th>Phase 2: Shop Launch (Wk 7-10)</th>
+                        <th>Phase 3: Scale (Wk 11+)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Target ROAS</td>
+                        <td><span class="tag tag-primary">2.5X</span></td>
+                        <td><span class="tag tag-pink">3.5X</span></td>
+                        <td><span class="tag tag-success">5X+</span></td>
+                    </tr>
+                    <tr>
+                        <td>Daily Budget</td>
+                        <td>$150</td>
+                        <td>$250</td>
+                        <td>$400+</td>
+                    </tr>
+                    <tr>
+                        <td>Campaign Type</td>
+                        <td>Website Conversions</td>
+                        <td>GMV Max (Product)</td>
+                        <td>GMV Max + LIVE GMV Max</td>
+                    </tr>
+                    <tr>
+                        <td>Checkout Flow</td>
+                        <td>shopteddyrose.com</td>
+                        <td>TikTok Shop in-app</td>
+                        <td>Dual (Shop + Website)</td>
+                    </tr>
+                    <tr>
+                        <td>Affiliate Program</td>
+                        <td>Not active</td>
+                        <td>Soft launch (5-10 creators)</td>
+                        <td>Full program (20+ creators)</td>
+                    </tr>
+                    <tr>
+                        <td>Key Focus</td>
+                        <td>Pixel learning, creative testing</td>
+                        <td>Shop conversion rate, GMV Max ROAS</td>
+                        <td>Volume scaling, affiliate growth</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="two-col" style="margin-top: 3rem;">
+                <div class="info-box">
+                    <h4 class="info-box-title">Why Higher ROAS for Shop?</h4>
+                    <p class="info-box-text">TikTok Shop removes checkout friction (no redirect, no re-entering payment info). Industry data shows in-app checkout can improve conversion rates 20-40% vs. external website. We expect this efficiency gain to translate to higher ROAS.</p>
+                </div>
+                <div class="info-box shop">
+                    <h4 class="info-box-title">Shop Commission Structure</h4>
+                    <p class="info-box-text">TikTok Shop takes ~5% referral fee on sales. Affiliate commissions (if used) typically run 15-20%. Factor these into margin calculations. Net margin is lower than website, but volume potential is higher.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 6: Creative Strategy -->
+    <section class="slide" id="creative">
+        <div class="slide-content">
+            <span class="section-number">05 — Creative Strategy</span>
+            <h2 class="section-title">Morgan-Led, Shoppable Content</h2>
+            <p class="section-subtitle">
+                The same authentic styling content that works on Meta—now with product tags, Shop links, and potential for affiliate amplification.
+            </p>
+
+            <div class="creative-grid">
+                <div class="creative-card">
+                    <div class="creative-preview">
+                        <div class="creative-emoji">👗</div>
+                        <div class="creative-hook">"POV: You finally found clothes that fit women over 40"</div>
+                    </div>
+                    <div class="creative-meta">
+                        <div class="creative-type">Home Runway / Try-On</div>
+                        <div class="creative-performance">+ Product Tags</div>
+                    </div>
+                </div>
+                <div class="creative-card">
+                    <div class="creative-preview">
+                        <div class="creative-emoji">📦</div>
+                        <div class="creative-hook">"New arrivals just dropped—let me show you everything"</div>
+                    </div>
+                    <div class="creative-meta">
+                        <div class="creative-type">Weekly Unboxing</div>
+                        <div class="creative-performance">+ Shop Link</div>
+                    </div>
+                </div>
+                <div class="creative-card">
+                    <div class="creative-preview">
+                        <div class="creative-emoji">🔴</div>
+                        <div class="creative-hook">"LIVE: Monday Drop Preview—shop with me!"</div>
+                    </div>
+                    <div class="creative-meta">
+                        <div class="creative-type">LIVE Shopping (Phase 2)</div>
+                        <div class="creative-performance">Real-time Sales</div>
+                    </div>
+                </div>
+                <div class="creative-card">
+                    <div class="creative-preview">
+                        <div class="creative-emoji">✨</div>
+                        <div class="creative-hook">"How I style one piece 5 different ways"</div>
+                    </div>
+                    <div class="creative-meta">
+                        <div class="creative-type">Styling Tutorial</div>
+                        <div class="creative-performance">+ Multi-Product Tag</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="two-col" style="margin-top: 3.5rem;">
+                <div>
+                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 1.75rem;">Content Pillars</h3>
+                    <div class="card" style="margin-bottom: 1.25rem;">
+                        <h4 class="card-title">Weekly Arrivals Showcase</h4>
+                        <p class="card-text">Every Monday drop becomes shoppable content. Morgan walks through new pieces—viewers tap to buy without leaving TikTok.</p>
+                    </div>
+                    <div class="card" style="margin-bottom: 1.25rem;">
+                        <h4 class="card-title">Real Woman, Real Fits</h4>
+                        <p class="card-text">Candid try-ons in natural lighting. The bedroom/hallway runway format dominates TikTok fashion. Each item tagged for instant purchase.</p>
+                    </div>
+                    <div class="card shop-card">
+                        <h4 class="card-title">LIVE Shopping Events (Phase 2)</h4>
+                        <p class="card-text">Monday evening LIVE sessions for new arrivals. Real-time Q&A, styling tips, limited-time offers. TikTok reports elevated conversion during LIVE.</p>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 1.75rem;">Affiliate Program Strategy</h3>
+                    <div class="card shop-card" style="margin-bottom: 1.25rem;">
+                        <h4 class="card-title">Creator Recruitment</h4>
+                        <p class="card-text">Target 10-20 micro-creators (10K-100K followers) in the 35-55 age range who create fashion/lifestyle content. Use TikTok Creator Marketplace.</p>
+                    </div>
+                    <div class="card shop-card" style="margin-bottom: 1.25rem;">
+                        <h4 class="card-title">Commission Structure</h4>
+                        <p class="card-text"><strong>Base:</strong> 15% on all sales. <strong>Bonus tiers:</strong> 20% at $5K/month, 25% at $10K/month. Product sampling for top performers.</p>
+                    </div>
+                    <div class="card shop-card">
+                        <h4 class="card-title">Content Guidelines</h4>
+                        <p class="card-text">Provide brand guidelines, winning hooks, and product training. Best affiliate content gets boosted via GMV Max—amplifying their reach and your sales.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 7: Campaign Structure -->
+    <section class="slide" id="structure">
+        <div class="slide-content">
+            <span class="section-number">06 — Campaign Architecture</span>
+            <h2 class="section-title">Phase 1 & Phase 2 Structures</h2>
+            <p class="section-subtitle">
+                Phase 1 uses traditional website conversion campaigns. Phase 2 transitions to GMV Max with TikTok Shop integration.
+            </p>
+
+            <div class="phase-badge phase-1">📍 Phase 1: Website Conversions</div>
+
+            <table class="data-table" style="margin-bottom: 3rem;">
+                <thead>
+                    <tr>
+                        <th>Campaign</th>
+                        <th>Ad Group</th>
+                        <th>Targeting</th>
+                        <th>Budget</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="4" style="vertical-align: top; font-weight: 600;">
+                            T&R Website Conversions<br>
+                            <span style="font-weight: 400; color: var(--text-secondary); font-size: 0.85rem;">Objective: Complete Payment</span>
+                        </td>
+                        <td>Broad — US Women 35-54</td>
+                        <td>Ages 35-54, Female, US</td>
+                        <td>$40/day</td>
+                    </tr>
+                    <tr>
+                        <td>LAL 1% Purchasers</td>
+                        <td>Lookalike of Customer List</td>
+                        <td>$35/day</td>
+                    </tr>
+                    <tr>
+                        <td>Interest — Fashion</td>
+                        <td>Fashion, Women's Clothing, Lifestyle</td>
+                        <td>$40/day</td>
+                    </tr>
+                    <tr>
+                        <td>Interest — Shopping</td>
+                        <td>Online Shoppers, E-commerce Engagers</td>
+                        <td>$35/day</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="phase-badge phase-2">🛒 Phase 2: GMV Max (TikTok Shop)</div>
+
+            <table class="data-table shop">
+                <thead>
+                    <tr>
+                        <th>Campaign Type</th>
+                        <th>Products</th>
+                        <th>Creative Sources</th>
+                        <th>Budget</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="font-weight: 600;">
+                            Product GMV Max<br>
+                            <span style="font-weight: 400; color: var(--text-secondary); font-size: 0.85rem;">Automated product ads</span>
+                        </td>
+                        <td>Full catalog (auto-selected by AI)</td>
+                        <td>Organic videos, Affiliate content, Paid creative</td>
+                        <td>$200/day</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">
+                            LIVE GMV Max<br>
+                            <span style="font-weight: 400; color: var(--text-secondary); font-size: 0.85rem;">Livestream amplification</span>
+                        </td>
+                        <td>Featured products during LIVE</td>
+                        <td>Real-time LIVE content</td>
+                        <td>$50/LIVE event</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="cards-grid" style="margin-top: 3rem;">
+                <div class="card">
+                    <h3 class="card-title">Phase 1 Settings</h3>
+                    <p class="card-text" style="margin-bottom: 0.75rem;"><strong>Bid Strategy:</strong> Lowest Cost → Cost Cap</p>
+                    <p class="card-text" style="margin-bottom: 0.75rem;"><strong>Placement:</strong> TikTok Feed Only</p>
+                    <p class="card-text"><strong>Destination:</strong> shopteddyrose.com</p>
+                </div>
+                <div class="card shop-card">
+                    <h3 class="card-title">Phase 2 Settings</h3>
+                    <p class="card-text" style="margin-bottom: 0.75rem;"><strong>Bid Strategy:</strong> Minimum ROAS (target 3X)</p>
+                    <p class="card-text" style="margin-bottom: 0.75rem;"><strong>Placement:</strong> Auto (Feed, Shop Tab, Search)</p>
+                    <p class="card-text"><strong>Destination:</strong> TikTok Shop checkout</p>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">Scaling Protocol</h3>
+                    <p class="card-text" style="margin-bottom: 0.75rem;"><strong>Rule:</strong> Max 20% budget increase per day</p>
+                    <p class="card-text" style="margin-bottom: 0.75rem;"><strong>GMV Max:</strong> Increase daily budget, AI handles rest</p>
+                    <p class="card-text"><strong>Losers:</strong> Lower ROAS floor before pausing</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 8: TikTok Shop Setup -->
+    <section class="slide">
+        <div class="slide-content">
+            <span class="section-number shop">07 — TikTok Shop Setup (Phase 2)</span>
+            <h2 class="section-title">Seller Center Onboarding</h2>
+            <p class="section-subtitle">
+                TikTok Shop setup typically takes 3-5 days for account validation. Here's the step-by-step process to prepare for Phase 2.
+            </p>
+
+            <div class="two-col">
+                <div class="timeline shop">
+                    <div class="timeline-item">
+                        <div class="timeline-day">Step 1</div>
+                        <div class="timeline-title">Register Seller Center Account</div>
+                        <div class="timeline-text">Go to seller-us.tiktok.com. Register with business email. Upload required documents: business license, tax ID, bank account details.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-day">Step 2</div>
+                        <div class="timeline-title">Connect Shopify Integration</div>
+                        <div class="timeline-text">Install TikTok app in Shopify. Authorize catalog sync. Products, inventory, and pricing automatically sync to TikTok Shop.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-day">Step 3</div>
+                        <div class="timeline-title">Configure Shipping & Returns</div>
+                        <div class="timeline-text">Set shipping templates (standard, expedited). Define return policy. TikTok requires clear policies for Shop approval.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-day">Step 4</div>
+                        <div class="timeline-title">Link TikTok Business Account</div>
+                        <div class="timeline-text">Connect Teddy & Rose TikTok account to Seller Center. This enables Spark Ads, product tagging in organic posts, and LIVE Shopping.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-day">Step 5</div>
+                        <div class="timeline-title">Enable Shop Ads</div>
+                        <div class="timeline-text">Connect Ad Account to Seller Center. Launch GMV Max campaigns. Set minimum ROAS target and daily budget.</div>
+                    </div>
+                </div>
+                <div>
+                    <div class="card shop-card" style="margin-bottom: 1.5rem;">
+                        <h3 class="card-title">Required Documents</h3>
+                        <div class="checklist" style="margin-top: 1rem;">
+                            <div class="checklist-item">
+                                <span class="box shop"></span>
+                                <span>Business license or registration</span>
+                            </div>
+                            <div class="checklist-item">
+                                <span class="box shop"></span>
+                                <span>Tax identification number (EIN)</span>
+                            </div>
+                            <div class="checklist-item">
+                                <span class="box shop"></span>
+                                <span>Bank account for payouts</span>
+                            </div>
+                            <div class="checklist-item">
+                                <span class="box shop"></span>
+                                <span>Government-issued ID (owner)</span>
+                            </div>
+                            <div class="checklist-item">
+                                <span class="box shop"></span>
+                                <span>Product images meeting TikTok specs</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card shop-card" style="margin-bottom: 1.5rem;">
+                        <h3 class="card-title">Shopify Sync Details</h3>
+                        <p class="card-text" style="margin-bottom: 0.75rem;"><strong>Products:</strong> Auto-sync titles, descriptions, images, variants</p>
+                        <p class="card-text" style="margin-bottom: 0.75rem;"><strong>Inventory:</strong> Real-time stock levels sync</p>
+                        <p class="card-text"><strong>Orders:</strong> TikTok orders appear in Shopify for fulfillment</p>
+                    </div>
+                    <div class="info-box shop">
+                        <h4 class="info-box-title">Timeline Note</h4>
+                        <p class="info-box-text">Account validation typically takes 3 days. We recommend starting this process during Week 4 of Phase 1, so Shop is ready when we're ready to transition.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 9: Launch Timeline -->
+    <section class="slide" id="timeline">
+        <div class="slide-content">
+            <span class="section-number">08 — Launch Timeline</span>
+            <h2 class="section-title">12-Week Rollout Plan</h2>
+            <p class="section-subtitle">
+                A systematic rollout that proves the channel before adding Shop complexity.
+            </p>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Week</th>
+                        <th>Phase</th>
+                        <th>Key Activities</th>
+                        <th>Success Metrics</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="tag tag-primary">1-2</span></td>
+                        <td>Phase 1 Setup</td>
+                        <td>Install pixel, upload creatives, build audiences, launch website campaigns</td>
+                        <td>Campaigns delivering, no policy violations</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-primary">3-4</span></td>
+                        <td>Phase 1 Optimization</td>
+                        <td>Analyze data, pause losers, scale winners, test new creative hooks</td>
+                        <td>≥2X ROAS, positive CPA trend</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-primary">5-6</span></td>
+                        <td>Phase 1 Scale + Shop Prep</td>
+                        <td>Scale to $200/day, begin Seller Center registration, prepare catalog</td>
+                        <td>≥2.5X ROAS, Shop account approved</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-pink">7-8</span></td>
+                        <td>Phase 2 Launch</td>
+                        <td>Launch GMV Max, enable product tags, soft-launch affiliate program</td>
+                        <td>Shop orders flowing, GMV tracking</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-pink">9-10</span></td>
+                        <td>Phase 2 Optimization</td>
+                        <td>Optimize GMV Max ROAS floor, test LIVE Shopping, recruit more affiliates</td>
+                        <td>≥3X Shop ROAS, 5+ active affiliates</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-success">11-12</span></td>
+                        <td>Scale</td>
+                        <td>Scale to $400+/day, full affiliate program, regular LIVE schedule</td>
+                        <td>≥4X blended ROAS, sustainable volume</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="info-box" style="margin-top: 3rem;">
+                <h4 class="info-box-title">Decision Gates</h4>
+                <p class="info-box-text"><strong>Week 6 Gate:</strong> If Phase 1 ROAS ≥2X → Proceed to Phase 2 (TikTok Shop). If ROAS 1.5-2X → Extend Phase 1 by 2 weeks, refresh creative. If ROAS &lt;1.5X → Pause and reassess strategy before continuing.<br><br><strong>Week 10 Gate:</strong> If Shop ROAS ≥3X → Scale budget aggressively. If Shop ROAS &lt;2X → Reduce Shop budget, maintain website campaigns as primary.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 10: Call to Action -->
+    <section class="slide">
+        <div class="slide-content" style="text-align: center;">
+            <span class="section-number" style="justify-content: center;">09 — Next Steps</span>
+            <h2 class="section-title">Ready to Launch</h2>
+            <p class="section-subtitle" style="margin-left: auto; margin-right: auto;">
+                Phase 1 requires minimal setup. TikTok Shop preparation can run in parallel once we're confident in the channel.
+            </p>
+
+            <div class="two-col" style="text-align: left; margin-bottom: 3rem;">
+                <div class="cta-box" style="margin-top: 0;">
+                    <h3 class="cta-title">Phase 1 Requirements (Immediate)</h3>
+                    <div class="cta-items" style="flex-direction: column; align-items: flex-start; gap: 1rem;">
+                        <div class="cta-item"><span class="check">☐</span><span>Approve $1,050/week test budget</span></div>
+                        <div class="cta-item"><span class="check">☐</span><span>Export customer email list for lookalikes</span></div>
+                        <div class="cta-item"><span class="check">☐</span><span>Grant TikTok pixel access (via GTM)</span></div>
+                        <div class="cta-item"><span class="check">☐</span><span>Identify 5+ UGC videos for repurposing</span></div>
+                        <div class="cta-item"><span class="check">☐</span><span>Create TikTok Business Account (if not exists)</span></div>
+                    </div>
+                </div>
+                <div class="cta-box" style="margin-top: 0; background: linear-gradient(135deg, rgba(255,0,80,0.08) 0%, rgba(157,78,221,0.05) 100%); border-color: rgba(255,0,80,0.2);">
+                    <h3 class="cta-title" style="color: var(--accent-pink);">Phase 2 Requirements (Week 4-6)</h3>
+                    <div class="cta-items" style="flex-direction: column; align-items: flex-start; gap: 1rem;">
+                        <div class="cta-item"><span class="check">☐</span><span>Business license and tax ID documents</span></div>
+                        <div class="cta-item"><span class="check">☐</span><span>Bank account for TikTok Shop payouts</span></div>
+                        <div class="cta-item"><span class="check">☐</span><span>Shipping and return policy documentation</span></div>
+                        <div class="cta-item"><span class="check">☐</span><span>Decision on affiliate commission structure</span></div>
+                        <div class="cta-item"><span class="check">☐</span><span>Morgan availability for LIVE Shopping tests</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cards-grid" style="text-align: left;">
+                <div class="card">
+                    <div class="card-icon">📊</div>
+                    <h3 class="card-title">Reporting Cadence</h3>
+                    <p class="card-text">Weekly Slack updates with ROAS by campaign, creative winners, and optimization actions. Bi-weekly Loom walkthroughs for strategic reviews.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">💬</div>
+                    <h3 class="card-title">Communication</h3>
+                    <p class="card-text">Same Slack channel as Meta and Google. Real-time flags for any issues. Full transparency on performance across all channels.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🎯</div>
+                    <h3 class="card-title">Success Vision</h3>
+                    <p class="card-text">By Week 12: TikTok contributing $15K+/month in revenue at 4X+ blended ROAS, with growing affiliate network and established LIVE Shopping cadence.</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 4rem; padding: 2.5rem; background: var(--bg-card); border-radius: 20px; border: 1px solid var(--border-subtle);">
+                <p style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 500; margin-bottom: 1rem;">
+                    "TikTok Shop isn't the future—it's $1.1B/month happening right now. Womenswear is a top category. The infrastructure is ready. Let's capture this channel."
+                </p>
+                <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                    Phase 1 proves the creative. Phase 2 unlocks native commerce. Together, they build a scalable third pillar alongside Meta and Google.
+                </p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
